@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="Css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="item" onclick="getClientChoice()">rock</div>
+      <div class="item" onclick="getClientChoice()">paper</div>
+      <div class="item" onclick="getClientChoice()">scissor</div>
+      <p class="result"></p>
+    </div>
+    <script>
+      let result = document.querySelector(".result");
+      let choices = [];
+      let items = document.querySelectorAll(".item");
+      items.forEach(function (item) {
+        choices.push(item.innerHTML);
+      });
+      //   console.log(choices);
+      for (j in choices) {
+        var enu = Math.floor(Math.random(j) * 3);
+        for (i in choices) {
+          var Pc = choices[enu];
+        }
+        // console.log(Pc);
+      }
+      items.forEach(function (item) {
+        item.addEventListener("click", getClientChoice, false);
+      });
+
+      let clickedItem = null;
+      function getClientChoice(e) {
+        clickedItem = e.currentTarget.innerHTML;
+        // console.log(clickedItem);
+        if (clickedItem === Pc) {
+          result.innerHTML = "<p class='text tie'>Tie!</p>";
+        } else if (clickedItem == "rock") {
+          if (Pc == "scissor") {
+            result.innerHTML = "<p class='text cl_win'>You Won!</p>";
+          } else {
+            result.innerHTML = "<p class='text pc_win'>You Lost!</p>";
+          }
+        } else if (clickedItem == "paper") {
+          if (Pc == "scissor") {
+            result.innerHTML = "<p class='text pc_win'>You Lost!</p>";
+          } else {
+            result.innerHTML = "<p class='text pc_win'>You Won!</p>";
+          }
+        } else if (clickedItem == "scissor") {
+          if (Pc == "paper") {
+            result.innerHTML = "<p class='text pc_win'>You Won!</p>";
+          } else {
+            result.innerHTML = "<p class='text pc_win'>You Lost!</p>";
+          }
+        }
+      }
+      // document.write("<p class='text cl_win'>You Won!</p>");
+    </script>
+    <!-- <script src="Js/script.js"></script> -->
+  </body>
+</html>
